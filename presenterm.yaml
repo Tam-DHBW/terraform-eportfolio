@@ -1,0 +1,11 @@
+options:
+
+defaults:
+  # validate_overflows: always
+
+snippet:
+  exec:
+    enable: true
+  exec_replace:
+    enable: true
+
