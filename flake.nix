@@ -11,8 +11,7 @@
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
     present = pkgs.writeShellScriptBin "present" ''
-      kitty -c kitty.conf -T "Terraform E-Portfolio" \
-      presenterm --config-file presenterm.yaml slides/slides.md
+      kitty -T "Terraform E-Portfolio" presenterm slides/slides.md
     '';
   in {
     devShells.x86_64-linux.default = pkgs.mkShell {
@@ -24,6 +23,9 @@
       ] ++ [
         presenterm.outputs.packages.${system}.default
       ];
+
+      KITTY_CONFIG_DIRECTORY = ".";
+      PRESENTERM_CONFIG_FILE = "presenterm.yaml";
     };
   };
 }
