@@ -8,7 +8,7 @@ theme:
             style: template
             height: 4
             left:
-                image: terraform-logo.png
+                image: logos/terraform-logo.png
             center: "{title}  /    Tam-DHBW/terraform-eportfolio"
 
 ---
@@ -102,7 +102,7 @@ BUT FEAR NOT!
 <!--alignment: center-->
 <!--font_size: 3-->
 # Introducing
-![image:width:50%](./terraform-logo.png)
+![image:width:50%](./logos/terraform-logo.png)
 
 <!--end_slide-->
 
@@ -305,7 +305,7 @@ api_routes! {
 
 
 
-![image:width:35%](./terraform-logo.png)
+![image:width:35%](./logos/terraform-logo.png)
 
 
 
