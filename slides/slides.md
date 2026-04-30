@@ -31,7 +31,7 @@ The Cloud
 
 ## The Numbers
 - ~9/10 organizations are using the cloud[^1]
-- ~7/10 use more than one [^1]
+- ~7/10 use more than one[^1]
 - Half pursuing cloud-first strategy[^1]
 - Cloud market worth **>$900B+**[^2]
 
@@ -201,6 +201,130 @@ ndmckinley/dominos[^5]
 
 <!--end_slide-->
 
+Real world example
+===
+
+# jAilbreak Software Engineering project
+
+<!--column_layout: [2, 3, 2]-->
+
+
+<!--column: 0-->
+## Our terraform config
+```text +no_background
+ jailbreak
+|  terraform
+| │  api_gateway.tf
+| │  api_lambda.tf
+| │  cloudfront.tf
+| │  cloudwatch_logs.tf
+| │  cognito.tf
+| │  dynamodb.tf
+| │  main.tf
+| │  outputs.tf
+| │  s3.tf
+| └  variables.tf
+|
+```
+
+<!--column: 1-->
+## We know our cloud resources!
+
+| Type | Count |
+|------|-------|
+| IAM Role Policy | 5 |
+| Lambda Permission | 4 |
+| Lambda Function | 4 |
+| DynamoDB Table | 3 |
+| S3 Bucket | 2 |
+| IAM Role | 2 |
+| Cognito User Pool Client | 2 |
+| CloudWatch Log Group | 2 |
+| CloudFront Function | 2 |
+| S3 Bucket Website Configuration | 1 |
+| S3 Bucket Policy | 1 |
+| Random String | 1 |
+| Cognito User Pool Domain | 1 |
+| Cognito User Pool | 1 |
+| Cognito User Group | 1 |
+| CloudFront Origin Access Control | 1 |
+| CloudFront Distribution | 1 |
+| API Gateway Stage | 1 |
+| API Gateway REST API | 1 |
+| API Gateway Deployment | 1 |
+
+<!--column: 2-->
+## Usage
+- AWS provider
+- Deployment of
+  - Frontend
+  - Backend
+- Remote state
+- Outputs
+
+<!--reset_layout-->
+---
+
+<!--alignment: center-->
+<!--font_size: 2-->
+=> 37 Terraform managed resources
+
+<!--end_slide-->
+
+Real world example
+===
+
+<!--column_layout: [1, 1]-->
+<!--column: 0-->
+# Benefits for jAilbreak
+- Had to switch AWS account
+  - Switched in ~1 hour
++ Ease of deployment
+- Rollback temporary changes
++ Tracked in Git
+  + Merging of frontend/backend
+- Automatic API routing
+
+<!--column: 1-->
+<!--alignment: center-->
+# Automated API route creation
+<!--comment: Not perl of course, just has nice highlighting-->
+```perl
+api_routes! {
+  ["levels"] { 
+    GET  --> levels::get_levels;
+  }
+  ["levels", (level_id), "validate"] { 
+    POST --> levels::validate_password;
+  }
+ ...
+}
+
+```
+
+
+
+
+![image:width:35%](./terraform-logo.png)
+
+
+
+![image:width:20%](./aws-icons/Arch_Amazon-API-Gateway_64.png)
+
+<!--end_slide-->
+
+```bash +exec +pty
+/// set -x
+/// cd ~/dhbw/jailbreak/terraform/
+/// nix develop -c bash -c "
+/// set -x
+aws sso login
+terraform plan -lock=false
+/// "
+```
+
+<!--end_slide-->
+
 Footnotes
 ===
 
@@ -209,5 +333,3 @@ Footnotes
 [^3]: https://registry.terraform.io/providers/conradludgate/spotify/latest
 [^4]: https://registry.terraform.io/providers/Lucky3028/discord/latest
 [^5]: https://github.com/nat-henderson/terraform-provider-dominos
-
-<!--end_slide-->
