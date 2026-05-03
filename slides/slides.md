@@ -209,7 +209,7 @@ Terraform Basics
 
 # Configuration files
 - Configuration directory
-  - Recursive automatic import
+  - Automatic import
 - `.tf` extension
 + Can contain
   + Providers
@@ -394,6 +394,10 @@ terraform init
 terraform plan -lock=false
 /// "
 ```
+
+<!--end_slide-->
+
+<!--include: demo.md-->
 
 <!--end_slide-->
 

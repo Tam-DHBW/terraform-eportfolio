@@ -2,10 +2,36 @@ options:
 
 defaults:
   # validate_overflows: always
+#
+bindings:
+  exit: []
 
 snippet:
-  exec:
-    enable: true
   exec_replace:
     enable: true
+  exec:
+    enable: true
+    custom:
+      bash:
+        filename: script.sh
+        commands:
+          - ["bash", "$pwd/script.sh"]
+        hidden_line_prefix: "/// "
+        alternative:
+          tf:
+            hidden_line_prefix: "/// "
+            filename: script.sh
+
+            environment:
+              TF_IN_AUTOMATION: 1
+              BAT_PAGING: always
+            
+            commands:
+              - ["bash", "-c", "
+                  clear;
+                  SNIPPET_SCRIPT=\"$pwd/script.sh\";
+                  cd ../demo;
+                  bash $SNIPPET_SCRIPT 2>&1;
+                  if [ -t 1 ]; then echo Press ENTER; read; fi;
+                "]
 
