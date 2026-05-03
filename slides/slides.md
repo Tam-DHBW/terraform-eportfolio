@@ -201,6 +201,77 @@ ndmckinley/dominos[^5]
 
 <!--end_slide-->
 
+Terraform Basics
+===
+
+<!--column_layout: [1, 1]-->
+<!--column: 0-->
+
+# Configuration files
+- Configuration directory
+  - Recursive automatic import
+- `.tf` extension
++ Can contain
+  + Providers
+  + Resources
+  + Data soruces
+  + Variables
+  + Locals
+  + Outputs
+
+- Lock file
+- State file
+
+<!--pause-->
+    
+<!--column: 1-->
+# Configuring a provider
+```terraform
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.92"
+    }
+  }
+}
+
+provider "aws" {
+  region = "eu-central-1"
+}
+```
+
+# Creating a resource
+```terraform
+resource "aws_dynamodb_table" "my_table" {
+  name         = "my_table"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "my_column"
+
+  attribute {
+    name = "my_column"
+    type = "S"
+  }
+}
+```
+
+<!--pause-->
+
+<!--column: 0-->
+---
+
+# Initialize Terraform
+```bash
+terraform init
+```
+
+# Deploy resources
+```bash
+terraform apply
+```
+
+<!--end_slide-->
+
 Real world example
 ===
 
@@ -319,6 +390,7 @@ api_routes! {
 /// nix develop -c bash -c "
 /// set -x
 aws sso login
+terraform init
 terraform plan -lock=false
 /// "
 ```
