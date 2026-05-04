@@ -97,6 +97,14 @@ terraform init
 ```
 
 <!--end_slide-->
+<!--skip_slide-->
+
+The files have to be created in the working directory that you are running Terraform from!
+
+If you are getting errors from the GitHub API, you most likely chose the incorrect access token permissions
+
+
+<!--end_slide-->
 
 Creating a repository
 ===
@@ -123,6 +131,13 @@ resource "github_repository" "live_demo" {
 /// ./configure-steps.sh 2
 terraform apply
 ```
+
+<!--end_slide-->
+<!--skip_slide-->
+
+Make sure to choose a repository name, which does not exist yet on your account!
+
+Without `auto_init`, no default branch and root commit will be created!
 
 <!--end_slide-->
 
@@ -222,6 +237,11 @@ terraform apply
 ```
 
 <!--end_slide-->
+<!--skip_slide-->
+
+The `draft` and `prerelease` options have to be provided, otherwise it will not be a proper stable release!
+
+<!--end_slide-->
 
 Disaster recovery
 ===
@@ -241,6 +261,11 @@ Greg the intern deleted super important 1.0 release
 /// ./configure-steps.sh 5
 terraform apply
 ```
+
+<!--end_slide-->
+<!--skip_slide-->
+
+You are free to delete more things than just the release. Terraform will take care of it!
 
 <!--end_slide-->
 
