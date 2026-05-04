@@ -10,16 +10,21 @@
   outputs = { self, nixpkgs, presenterm }: let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
-    present = pkgs.writeShellScriptBin "present" ''
-      kitty -T "Terraform E-Portfolio" presenterm slides/slides.md
+    slides-present = pkgs.writeShellScriptBin "slides-present" ''
+      kitty -T "Terraform E-Portfolio" -- presenterm slides/slides.md -x -X $@ 
+    '';
+
+    slides-export = pkgs.writeShellScriptBin "slides-export" ''
+      presenterm slides/slides.md -e $@
     '';
   in {
     devShells.x86_64-linux.default = pkgs.mkShell {
       packages = with pkgs; [ 
         terraform
         kitty
-        present
-        typst
+        python313Packages.weasyprint
+        slides-present
+        slides-export
       ] ++ [
         presenterm.outputs.packages.${system}.default
       ];

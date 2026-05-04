@@ -1,16 +1,13 @@
-options:
-
-defaults:
-  # validate_overflows: always
-#
 bindings:
   exit: []
 
+export:
+  dimensions:
+    columns: 135
+    rows: 43
+
 snippet:
-  exec_replace:
-    enable: true
   exec:
-    enable: true
     custom:
       bash:
         filename: script.sh

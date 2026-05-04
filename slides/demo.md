@@ -4,13 +4,20 @@ Hands-On Live Demo
 ===
 <!--end_slide-->
 
-Demo Goal
+Demo Goals
 ===
 
+<!--alignment: center-->
+
+- Install Terraform
+- Initialize GitHub provider
 - Create GitHub Repo
-- Create branches
-- Fork the repo
+- Obtain the default branch
+- Commit a README
+- Obtain the commit hash
 - Publish a release
+- Disaster recovery
+- Tear down deployment
 
 <!--end_slide-->
 
@@ -60,7 +67,6 @@ Provider Setup
 ```file +line_numbers {1-8|12-14|10|all}
 path: ../demo/steps/step1.tf
 language: terraform
-name: asd
 ```
 
 ## auth.auto.tfvars
