@@ -15,7 +15,7 @@ or alternatively the rendered PDF version
 ## Hands-On Demo
 The demo tutorial is included as part of the slides,
 however you can also check it out separately in
-- [./slides/demo.md](./slides/demo.md)
+- [./demo-substituted.md](./demo-substituted.md)
 
 The demo tutorial in markdown contains some extra comments,
 that are excluded from the presentation.
@@ -25,4 +25,4 @@ You can find the code for the different Hands-On Demo steps in
 
 ## Prerequisites
 Installation instructions for Terraform can be found in
-- [The "Setting Up" section of the demo](./slides/demo.md#setting-up)
+- [The "Setting Up" section of the demo](./demo-substituted.md#setting-up)
